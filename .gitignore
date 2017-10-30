@@ -1,0 +1,5 @@
+manager-system-front/node_modules/
+manager-system-back/node_modules/
+.idea/
+.vscode/
+dist/
