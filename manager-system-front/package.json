@@ -14,7 +14,12 @@
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.20.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.17",
+    "html-webpack-plugin": "^2.30.1",
+    "http-proxy-middleware": "^0.17.4",
+    "jquery": "^3.2.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
