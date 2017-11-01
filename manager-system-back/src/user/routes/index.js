@@ -27,6 +27,11 @@ router.post('/', (req, res)=>{
             res.send({
                 status : 200
             })
+        } else {
+            res.send({
+                // 每一种状态码代表一种结果, 定义常量
+                status : 601,
+            });
         }
     });
 })
