@@ -1,0 +1,23 @@
+<style>
+    .form-container{
+        max-width : 300px;
+        margin: 0 auto;
+        padding-top: 15px; 
+        box-shadow: 
+    }
+</style>
+
+<form class="form-container">
+    <div class="form-row form-group">
+        <label for="name" class="col-3">用户名:</label>
+        <input type="text" class="form-control col-7" name="name" ng-model="name" >
+    </div>
+    <div class="form-row form-group">
+        <label for="pwd" class="col-3">密码:</label>
+        <input type="password" class="form-control col-7" name="pwd" ng-model="pwd">
+    </div>
+    <div class="form-row">
+        <button class="btn btn-primary col-3 offset-2" type="button" >登录</button>
+        <button class="btn btn-primary col-3 offset-2" type="button" >注册</button>
+    </div>
+</form>

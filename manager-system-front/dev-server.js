@@ -10,6 +10,10 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 
 const app = express();
+
+//加载静态文件
+app.use(express.static('./src'));
+
 const config = require('./webpack.config.dev');
 const compiler = webpack(config);
 
@@ -25,8 +29,8 @@ app.use('/rest', proxy({target : 'http://127.0.0.1:8001', changeOrigin: true}));
 
 
 // Serve the files on port 8000.
-app.listen(8000, ()=>{
+app.listen(80, ()=>{
     setInterval(function(){
-        console.log("cilent is listening 8000")
+        console.log("cilent is listening 80")
     }, 5000)
 });

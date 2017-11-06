@@ -4,17 +4,20 @@
 
 const webpack = require('webpack');
 const path = require('path');
-const htmlWebpackHtml = require('html-webpack-plugin');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
     entry : {
-        app : ['./src/index.js', 'webpack-hot-middleware/client?reload=true']
+        app : ['./main.js', 'webpack-hot-middleware/client?reload=true']
     },
     devtool: 'inline-source-map',
     module : {
         rules : [{
+            test: /\.js$/,
+            use : ['babel-loader']
+        },{
             test: /\.css$/,
             use : ['style-loader','css-loader']
         },{
@@ -24,11 +27,12 @@ module.exports = {
     },
     plugins : [
         new CleanWebpackPlugin(),
-        new htmlWebpackHtml({
+        new htmlWebpackPlugin({
             title : '管理系统',
-            template : './src/index.html'
+            template : './main.html'
         }),
-        new webpack.HotModuleReplacementPlugin
+        new webpack.HotModuleReplacementPlugin,
+        new OpenBrowserPlugin({ url: 'http://localhost:80' })
     ],
 
     output : {
