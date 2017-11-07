@@ -9,13 +9,17 @@
 */
 
 
-
 export default [{
     name: 'login',
     url: '/login',
-    controller: '',
-    templateUrl: 'business/login/views/login-component.html',
+    controller: 'loginCtrl',
+    templateUrl: 'business/login/view/login-component.html',
     resolve: {
 
     }
+},{
+    name: 'home',
+    url: '/home',
+    controller: 'homeCtrl',
+    templateUrl: 'business/home/view/home-component.html'
 }];

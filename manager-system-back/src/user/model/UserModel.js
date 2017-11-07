@@ -2,7 +2,7 @@
     user model
 */
 
-const mongoose = require('../../../db.config');
+const mongoose = require('../../common/config/db.config');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({

@@ -20,17 +20,20 @@ const compiler = webpack(config);
 // Tell express to use the webpack-dev-middleware and use the webpack.config.js
 // configuration file as a base.
 app.use(webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath
+    publicPath: config.output.publicPath
 }));
 
 app.use(webpackHotMiddleware(compiler));
 
-app.use('/rest', proxy({target : 'http://127.0.0.1:8001', changeOrigin: true}));
+app.use('/rest', proxy({
+    target: 'http://127.0.0.1:8001',
+    changeOrigin: true
+}));
 
 
 // Serve the files on port 8000.
-app.listen(80, ()=>{
-    setInterval(function(){
-        console.log("cilent is listening 80")
+app.listen(8000, () => {
+    setInterval(function () {
+        console.log("cilent is listening 8000")
     }, 5000)
 });

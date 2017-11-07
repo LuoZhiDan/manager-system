@@ -32,7 +32,7 @@ module.exports = {
             template : './main.html'
         }),
         new webpack.HotModuleReplacementPlugin,
-        new OpenBrowserPlugin({ url: 'http://localhost:80' })
+        new OpenBrowserPlugin({ url: 'http://localhost:8000' })
     ],
 
     output : {

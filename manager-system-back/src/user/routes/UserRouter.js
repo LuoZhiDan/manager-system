@@ -1,11 +1,36 @@
 const express = require('express');
 const router = express.Router();
+const userService = require('../service/UserService');
+const jwt = require('jsonwebtoken');
+const tokenConfig = require('../../common/config/token.config');
 
-const UserModel = require('../model/index');
 
 /* 查询 */
 router.get('/', (req, res)=>{
     
+})
+
+
+router.get('/login', (req, res)=>{
+    let param = req.body,
+        token,
+        user = {
+            name : param.name,
+            pwd : param.pwd
+        };
+
+    userService.findUser(user, (err, result)=>{
+        if(result){
+            token = jwt.sign(user, tokenConfig.secret_key);
+            res.json({
+                token : token
+            })
+        } else {
+            res.josn({
+                status : 601
+            })
+        }
+    })
 })
 
 

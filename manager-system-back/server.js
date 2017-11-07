@@ -7,7 +7,7 @@
  const bodyParser = require('body-parser');
  const app = express();
 
- const userRouter = require('./src/user/routes/index');
+ const userRouter = require('./src/user/routes/UserRouter');
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
