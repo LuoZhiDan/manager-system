@@ -9,10 +9,16 @@
 
  const userRouter = require('./src/user/routes/UserRouter');
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/rest', (req, res, next)=>{
+    
+})
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
+
 
 /* user rest服务 */
 app.use('/rest/user', userRouter);
