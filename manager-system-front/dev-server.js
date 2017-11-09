@@ -33,7 +33,5 @@ app.use('/rest', proxy({
 
 // Serve the files on port 8000.
 app.listen(8000, () => {
-    setInterval(function () {
-        console.log("cilent is listening 8000")
-    }, 5000)
+    console.log("cilent is listening 8000")
 });

@@ -19,7 +19,6 @@ angular.module('manager.system.demo', ['ui.router', 'manager.system.business'])
     .run(['$rootScope', '$state', 'cookieService', function($rootScope, $state, cookieService){
         $rootScope.$on('$stateChangeStart', 
             function(evt, toState, roParams, fromState, fromParams) {
-                
                 if(!cookieService.getToken() && toState.name != 'login') {
                     $state.go('login');
                     evt.preventDefault();
@@ -27,7 +26,7 @@ angular.module('manager.system.demo', ['ui.router', 'manager.system.business'])
                     $state.go('home');
                     evt.preventDefault();
                 }
-            }); 
+            });
     }])
 
 angular.bootstrap($('html'), ['manager.system.demo'])

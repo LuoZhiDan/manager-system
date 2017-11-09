@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const userService = require('../service/UserService');
+const userAction = require('../action/UserAction');
 const jwt = require('jsonwebtoken');
 const tokenConfig = require('../../common/config/token.config');
 
@@ -12,21 +12,21 @@ router.get('/', (req, res)=>{
 
 
 router.get('/login', (req, res)=>{
-    let param = req.body,
+    let param = req.query,
         token,
         user = {
             name : param.name,
             pwd : param.pwd
         };
 
-    userService.findUser(user, (err, result)=>{
-        if(result){
+    userAction.findUser(user, (err, result)=>{
+        if(result && result.name === user.name && result.pwd === user.pwd){
             token = jwt.sign(user, tokenConfig.secret_key);
             res.json({
                 token : token
             })
         } else {
-            res.josn({
+            res.json({
                 status : 601
             })
         }

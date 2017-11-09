@@ -39,6 +39,6 @@ businessModule.service('loginService', loginService);
 /**
  * 首页模块
  */
-businessModule.controller('homeCtrl', loginCtrl);
+businessModule.controller('homeCtrl', homeCtrl);
 businessModule.service('homeService', homeService);
 
