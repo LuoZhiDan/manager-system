@@ -34,10 +34,10 @@ export default ['enumService', function(enumService){
     }
 
     this.getToken = ()=>{
-        return this.get(enumService.cookieName);
+        return this.get(enumService.get('token'));
     }
 
     this.setToken = (value)=>{
-        this.put(enumService.cookieName, value);
+        this.put(enumService.get('token'), value);
     }
 }];

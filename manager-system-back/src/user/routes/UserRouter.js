@@ -3,6 +3,7 @@ const router = express.Router();
 const userAction = require('../action/UserAction');
 const jwt = require('jsonwebtoken');
 const tokenConfig = require('../../common/config/token.config');
+const errorCode = require('../../common/config/errorcode.config')
 
 
 /* 查询 */
@@ -20,15 +21,15 @@ router.get('/login', (req, res)=>{
         };
 
     userAction.findUser(user, (err, result)=>{
+        // 用户名密码正确
         if(result && result.name === user.name && result.pwd === user.pwd){
             token = jwt.sign(user, tokenConfig.secret_key);
             res.json({
                 token : token
             })
+        // 不正确
         } else {
-            res.json({
-                status : 601
-            })
+            res.sendStatus(errorCode.ERROR_CODE_LOGIN);
         }
     })
 })

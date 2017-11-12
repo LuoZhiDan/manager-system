@@ -1,3 +1,7 @@
+
+
+import './common/css/common.css';
+import './common/css/home.css';
 import angular from "angular";
 
 
@@ -27,7 +31,7 @@ businessModule.config(['$stateProvider', function($stateProvider){
  * 注入公共服务 cookie服务
  */
 businessModule.service('cookieService', cookieService);
-businessModule.constant('enumService', enumService);
+businessModule.service('enumService', enumService);
 
 
 /**
