@@ -1,26 +1,32 @@
 <style>
     .form-container{
-        position: relative;
-        top : 40%;
         max-width : 300px;
         margin: 0 auto;
         padding: 15px; 
+    }
+
+    .login-bg{
+        margin: 10% auto 0;
+        width: 500px;
         border: 1px solid #ced4da;
         border-radius: 3px;
+        background-color: #fff;
     }
 </style>
 
-<form class="form-container">
-    <div class="form-row form-group">
-        <label class="col-form-label col-4" for="name">用户名:</label>
-        <input type="text" class="form-control col-8" name="name" ng-model="model.name" >
-    </div>
-    <div class="form-row form-group">
-        <label class="col-form-label col-4" for="pwd" >密码:</label>
-        <input type="password" class="form-control col-8" name="pwd" ng-model="model.pwd">
-    </div>
-    <div class="form-row">
-        <button class="btn btn-primary col-3 offset-4" type="button" ng-click="action.login()">登录</button>
-        <button class="btn btn-primary col-3 offset-2" type="button" ng-click="action.register()">注册</button>
-    </div>
-</form>
+<div class="login-bg">
+    <form class="form-container">
+        <div class="form-row form-group">
+            <label class="col-form-label col-4" for="name">用户名:</label>
+            <input type="text" class="form-control col-8" name="name" ng-model="model.name" >
+        </div>
+        <div class="form-row form-group">
+            <label class="col-form-label col-4" for="pwd" >密码:</label>
+            <input type="password" class="form-control col-8" name="pwd" ng-model="model.pwd">
+        </div>
+        <div class="form-row">
+            <button class="btn btn-primary col-3 offset-4" type="button" ng-click="action.login()">登录</button>
+            <button class="btn btn-primary col-3 offset-2" type="button" ng-click="action.register()">注册</button>
+        </div>
+    </form>
+</div>

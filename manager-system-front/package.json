@@ -4,7 +4,7 @@
   "main": "main.js",
   "dependencies": {
     "angular": "^1.4.8",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.0.0-beta.2",
     "css-loader": "^0.28.7",
     "express": "^4.16.2",
     "file-loader": "^1.1.5",
@@ -19,7 +19,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.0.0-beta.2",
     "clean-webpack-plugin": "^0.1.17",
     "html-webpack-plugin": "^2.30.1",
     "http-proxy-middleware": "^0.17.4",
