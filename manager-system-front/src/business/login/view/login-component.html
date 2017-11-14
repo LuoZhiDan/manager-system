@@ -11,7 +11,7 @@
     .login-bg{
         height:100%;
         margin: 0 auto;
-        display:flex;
+        display:flex; /* 实现垂直居中 display:flex;align-items:center; */
         align-items:center;
     }
 </style>
@@ -19,10 +19,10 @@
 <div class="login-bg">
     <form class="form-container">
         <div class="form-row form-group">
-            <input type="text" class="form-control" autofocus placeholder="用户名" name="name" ng-autofocus ng-model="model.name" minlength="6" maxlength="12">
+            <input type="text" class="form-control" autofocus placeholder="用户名" ng-model="model.name">
         </div>
         <div class="form-row form-group">
-            <input type="password" class="form-control" name="pwd" ng-model="model.pwd">
+            <input type="password" class="form-control" ng-model="model.pwd">
         </div>
         <div class="from-row from-group">
             <span class="col-from-label color-red" ng-bind="errorInfo"></span>
