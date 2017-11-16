@@ -3,15 +3,20 @@ export default [
     function ($scope, loginService, $state, cookieService, enumService) {
 
         $scope.model = {
-            name: '',
-            pwd: ''
+            user: {
+                name: '',
+                pwd: ''
+            },
+            disabled: () => {
+                return ($scope.model.user.name === '' || $scope.model.user.pwd === '');
+            },
+            errorInfo: ''
         }
 
-        $scope.errorInfo = "";
 
         $scope.action = {
             login: function () {
-                var promise = loginService.login($scope.model);
+                var promise = loginService.login($scope.model.user);
 
                 promise.then((sdata) => {
                     let data = sdata.data;
@@ -20,18 +25,15 @@ export default [
                         $state.go('home');
                     }
                 }, function (sdata) {
-                    $scope.model.pwd = "";
-                    $scope.errorInfo = enumService.get(sdata.status);
+                    $scope.model.user.pwd = "";
+                    $scope.model.errorInfo = enumService.get(sdata.status);
                 })
-            },
-            register: function () {
-                console.log($scope.model)
             }
         }
 
-        $scope.$watch('model.pwd', function (newValue, oldValue, scope) {
-            if(oldValue ==="" && newValue !== ""){
-                $scope.errorInfo = "";
+        $scope.$watch('model.user.pwd', function (newValue, oldValue, scope) {
+            if (oldValue === "" && newValue !== "") {
+                $scope.model.errorInfo = "";
             }
         });
     }

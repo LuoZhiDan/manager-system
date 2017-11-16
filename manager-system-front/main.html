@@ -6,7 +6,11 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body ng-controller="mainController">
-    <header ng-if="isBusinessPage" ng-controller="topController" ng-include="topNavURL"></header>
+    
+    <header ng-if="isBusinessPage">
+        <div ng-controller="topController" ng-include="topNavURL"></div>
+    </header>
+
     <div ng-class="{'content-login': isLoginPage, 'content-business': isBusinessPage}">
         <div ui-view style="overflow:auto;height:100%;position:relative;"></div>
     </div>

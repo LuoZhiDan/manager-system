@@ -19,16 +19,18 @@
 <div class="login-bg">
     <form class="form-container">
         <div class="form-row form-group">
-            <input type="text" class="form-control" autofocus placeholder="用户名" ng-model="model.name">
+            <input type="text" class="form-control" autofocus placeholder="用户名" 
+                    ng-model="model.user.name">
         </div>
         <div class="form-row form-group">
-            <input type="password" class="form-control" ng-model="model.pwd">
+            <input type="password" class="form-control" ng-model="model.user.pwd">
         </div>
         <div class="from-row from-group">
-            <label class="col-from-label color-red" ng-bind="errorInfo"></label>
+            <label class="col-from-label color-red" ng-bind="model.errorInfo"></label>
         </div>
         <div class="form-row">
-            <button class="btn btn-primary btn-block" type="button" ng-click="action.login()">登录</button>
+            <button class="btn btn-primary btn-block" type="button" 
+                ng-disabled="model.disabled()" ng-click="action.login()">登录</button>
         </div>
     </form>
 </div>

@@ -1,3 +1,17 @@
 .color-red{
     color: red!important;
 }
+
+.color-write{
+    color: #fff!important;
+}
+
+.user-icon{
+    display: inline-block;
+    height: 35px;
+    width: 25px;
+    background-size: 200px 200px;
+    background-image: url(/business/common/img/user-icon.jpg);
+    background-position-x: -8px;
+    background-position-y: -6px;
+}
