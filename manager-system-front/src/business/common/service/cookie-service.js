@@ -40,4 +40,8 @@ export default ['enumService', function(enumService){
     this.setToken = (value)=>{
         this.put(enumService.get('token'), value);
     }
+
+    this.loginOut = ()=>{
+        this.remove(enumService.get('token'));
+    }
 }];

@@ -6,14 +6,10 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body ng-controller="mainController">
-    <header class="header">
-
-    </header>
-    <div class="content">
+    <header ng-if="isBusinessPage" ng-controller="topController" ng-include="topNavURL"></header>
+    <div ng-class="{'content-login': isLoginPage, 'content-business': isBusinessPage}">
         <div ui-view style="overflow:auto;height:100%;position:relative;"></div>
     </div>
-    <footer class="footer">
-            <span>京ICP证080047号 京公网安备11000002000006号 中国互联网举报中心 360举报电话：010-58541935 举报邮箱：360report@360.cn</span>
-    </footer>
+    <footer ng-if="isLoginPage" ng-controller="footerController" ng-include="footerURL"></footer>
 </body>
 </html>

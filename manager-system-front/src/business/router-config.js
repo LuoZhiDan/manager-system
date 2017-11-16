@@ -13,7 +13,7 @@ export default [{
     name: 'login',
     url: '/login',
     controller: 'loginCtrl',
-    templateUrl: 'business/login/view/login-component.html',
+    templateUrl: 'business/login/view/login-view.html',
     resolve: {
 
     }
@@ -21,5 +21,5 @@ export default [{
     name: 'home',
     url: '/home',
     controller: 'homeCtrl',
-    templateUrl: 'business/home/view/home-component.html'
+    templateUrl: 'business/home/view/home-view.html'
 }];
