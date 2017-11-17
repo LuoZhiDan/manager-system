@@ -15,3 +15,13 @@
     background-position-x: -8px;
     background-position-y: -6px;
 }
+
+.logo-icon{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-size: 20px 20px;
+    background-image: url(/business/common/img/logo-icon.jpg);
+    background-position-x: -8px;
+    background-position-y: -6px;
+}

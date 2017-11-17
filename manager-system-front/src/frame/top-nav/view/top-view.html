@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" ui-sref="home">
+        <span class="logo-icon"></span>
         管理系统
     </a>
     <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
@@ -29,9 +30,18 @@
             <div class="dropdown">
                 <a class="btn btn-link dropdown-toggle color-write" ng-click="action.openMenu()" ng-bind="model.userName"></a>
                 <div class="dropdown-menu dropdown-menu-right" ng-class="{show: model.isOpen}">
-                    <a class="dropdown-item" ng-click="">用户信息</a>
-                    <a class="dropdown-item" ng-click="">修改</a>
-                    <a class="dropdown-item" ng-click="action.loginOut()">退出</a>
+                    <a class="dropdown-item" ng-click="">
+                        <img ng-src="/business/common/img/icon-user.svg" width="18px">
+                        <span style="padding-left:10px;">用户信息</span>
+                    </a>
+                    <a class="dropdown-item" ng-click="">
+                        <img ng-src="/business/common/img/icon-pwd.svg" width="18px">
+                        <span style="padding-left:10px;">修改密码</span>
+                    </a>
+                    <a class="dropdown-item" ng-click="action.loginOut()">
+                        <img ng-src="/business/common/img/icon-logout.svg" width="18px">
+                        <span style="padding-left:10px;">退出</span>
+                    </a>
                 </div>
             </div>
         </div>

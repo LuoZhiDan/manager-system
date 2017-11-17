@@ -6,7 +6,7 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body ng-controller="mainController">
-    <header ng-if="isBusinessPage">
+    <header ng-if="isBusinessPage" class="header">
         <div ng-controller="topController" ng-include="topNavURL"></div>
     </header>
 
