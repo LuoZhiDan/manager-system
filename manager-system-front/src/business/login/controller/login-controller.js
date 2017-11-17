@@ -1,6 +1,6 @@
 export default [
-    '$scope', 'loginService', '$state', 'cookieService', 'enumService',
-    function ($scope, loginService, $state, cookieService, enumService) {
+    '$scope', 'loginService', '$state', 'cookieService', 'enumService', 'userService',
+    function ($scope, loginService, $state, cookieService, enumService, userService) {
 
         $scope.model = {
             user: {
@@ -22,6 +22,7 @@ export default [
                     let data = sdata.data;
                     if (data.token) {
                         cookieService.setToken(data.token);
+                        userService.setUserName($scope.model.user.name);
                         $state.go('home');
                     }
                 }, function (sdata) {

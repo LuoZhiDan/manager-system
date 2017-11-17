@@ -1,10 +1,11 @@
-export default ['$scope', 'cookieService', '$state', 
-    function($scope, cookieService, $state){
+export default ['$scope', 'cookieService', '$state', 'userService',
+    function($scope, cookieService, $state, userService){
     
         $scope.topNavURL = 'frame/top-nav/view/top-view.html';
 
         $scope.model = {
-            isOpen : false
+            isOpen : false,
+            userName : userService.getUserName()
         }
         
         $scope.action = {

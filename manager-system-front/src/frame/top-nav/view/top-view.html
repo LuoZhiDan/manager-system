@@ -27,7 +27,7 @@
                 <a class="dropdown-item" href="#">退出</a>
             </div>
             <div class="dropdown">
-                <a class="btn btn-link dropdown-toggle color-write" ng-click="action.openMenu()">admin</a>
+                <a class="btn btn-link dropdown-toggle color-write" ng-click="action.openMenu()" ng-bind="model.userName"></a>
                 <div class="dropdown-menu dropdown-menu-right" ng-class="{show: model.isOpen}">
                     <a class="dropdown-item" ng-click="">用户信息</a>
                     <a class="dropdown-item" ng-click="">修改</a>

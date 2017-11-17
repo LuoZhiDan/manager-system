@@ -14,6 +14,8 @@ import homeService from './home/service/home-service';
 
 import cookieService from './common/service/cookie-service';
 import enumService from './common/service/enum-service';
+import userService from './common/service/user-service';
+
 
 
 
@@ -32,6 +34,7 @@ businessModule.config(['$stateProvider', function($stateProvider){
  */
 businessModule.service('cookieService', cookieService);
 businessModule.service('enumService', enumService);
+businessModule.service('userService', userService);
 
 
 /**
