@@ -10,7 +10,8 @@ export default [
             disabled: () => {
                 return ($scope.model.user.name === '' || $scope.model.user.pwd === '');
             },
-            errorInfo: ''
+            errorInfo: '',
+            errorState: false
         }
 
 
@@ -28,6 +29,7 @@ export default [
                 }, function (sdata) {
                     $scope.model.user.pwd = "";
                     $scope.model.errorInfo = enumService.get(sdata.status);
+                    $scope.model.errorState = true;
                 })
             }
         }
@@ -35,6 +37,7 @@ export default [
         $scope.$watch('model.user.pwd', function (newValue, oldValue, scope) {
             if (oldValue === "" && newValue !== "") {
                 $scope.model.errorInfo = "";
+                $scope.model.errorState = false;
             }
         });
     }

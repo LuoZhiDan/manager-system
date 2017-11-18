@@ -1,4 +1,4 @@
-export default ['enumService', function(enumService){
+export default ['enumService', '$http', function(enumService, $http){
     var user = {};
 
 
@@ -9,4 +9,9 @@ export default ['enumService', function(enumService){
     this.setUserName = (name)=>{
         user.name = name;
     }
+
+    this.getUserInfo = ()=>{
+
+    }
+    
 }]

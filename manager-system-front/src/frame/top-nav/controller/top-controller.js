@@ -5,16 +5,30 @@ export default ['$scope', 'cookieService', '$state', 'userService',
 
         $scope.model = {
             isOpen : false,
-            userName : userService.getUserName()
+            userName : userService.getUserName(),
+
+            menus : {
+                active: 'home',
+                menuItems : [{
+                    name : '首页',
+                    sref : 'home'
+                }]
+            }
         }
         
         $scope.action = {
-            openMenu : ()=>{
+            toggleMenu : ()=>{
                 $scope.model.isOpen = !$scope.model.isOpen;
+            },
+            closeMenu : ()=>{
+                $scope.model.isOpen = false;
             },
             loginOut : ()=>{
                 cookieService.loginOut();
                 $state.transitionTo('login');
+            },
+            updatePwd : ()=>{
+                $scope.action.closeMenu();
             }
         }
 }];

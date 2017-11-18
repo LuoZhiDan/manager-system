@@ -2,7 +2,7 @@
     .form-container{
         max-width: 320px;
         margin: -100px auto 0;
-        padding: 15px 40px; 
+        padding: 40px; 
         border: 1px solid #ced4da;
         border-radius: 3px;
         background-color: #fff;
@@ -19,14 +19,21 @@
 <div class="login-bg">
     <form class="form-container">
         <div class="form-row form-group">
-            <input type="text" class="form-control" autofocus placeholder="用户名" 
-                    ng-model="model.user.name">
+            <div class="input-group">
+                <span class="input-group-addon">
+                        <img ng-src="/business/common/img/icon-user.svg" width="18px" style="user-select:none;">
+                </span>
+                <input type="text" class="form-control" autofocus ng-model="model.user.name">
+            </div>
         </div>
         <div class="form-row form-group">
-            <input type="password" class="form-control" ng-model="model.user.pwd">
-        </div>
-        <div class="from-row from-group">
-            <label class="col-from-label color-red" ng-bind="model.errorInfo"></label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <img ng-src="/business/common/img/icon-pwd.svg" width="18px" style="user-select:none;">
+                </span>
+                <input type="password" class="form-control" ng-model="model.user.pwd" ng-class="{'is-invalid': model.errorState}">
+            </div>
+            <!-- <div class="invalid-feedback" ng-if="model.errorState" ng-bind="model.errorInfo"></div> -->
         </div>
         <div class="form-row">
             <button class="btn btn-primary btn-block" type="button" 
