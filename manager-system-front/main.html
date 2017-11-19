@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
-<body ng-controller="mainController">
+<body ng-controller="mainController" class="modal-open">
     <header ng-if="isBusinessPage" class="header">
         <div ng-controller="topController" ng-include="topNavURL"></div>
     </header>

@@ -1,34 +1,41 @@
-export default ['$scope', 'cookieService', '$state', 'userService',
-    function($scope, cookieService, $state, userService){
-    
+import updatePwdController from './update-pwd-controller';
+
+export default ['$scope', 'cookieService', '$state', 'userService', 'modalService',
+    function ($scope, cookieService, $state, userService, modalService) {
+
         $scope.topNavURL = 'frame/top-nav/view/top-view.html';
 
         $scope.model = {
-            isOpen : false,
-            userName : userService.getUserName(),
+            isOpen: false,
+            userName: userService.getUserName(),
 
-            menus : {
+            menus: {
                 active: 'home',
-                menuItems : [{
-                    name : '首页',
-                    sref : 'home'
+                menuItems: [{
+                    name: '首页',
+                    sref: 'home'
                 }]
             }
         }
-        
+
         $scope.action = {
-            toggleMenu : ()=>{
+            toggleMenu: () => {
                 $scope.model.isOpen = !$scope.model.isOpen;
             },
-            closeMenu : ()=>{
+            closeMenu: () => {
                 $scope.model.isOpen = false;
             },
-            loginOut : ()=>{
+            loginOut: () => {
                 cookieService.loginOut();
                 $state.transitionTo('login');
             },
-            updatePwd : ()=>{
+            updatePwd: () => {
                 $scope.action.closeMenu();
+                modalService.openModal({
+                    modalController: updatePwdController,
+                    url: 'frame/top-nav/view/update-pwd-view.html'
+                });
             }
         }
-}];
+    }
+];

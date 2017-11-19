@@ -32,6 +32,8 @@ const mainModule = angular.module('manager.system.demo', ['ui.router', 'manager.
                     evt.preventDefault();
                 }
             });
+
+        $rootScope.zIndex = 1000;
     }])
     .controller('mainController', ['$scope', '$http', '$state', 'cookieService',
         ($scope, $http, $state, cookieService) => {
