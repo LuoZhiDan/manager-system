@@ -2,18 +2,35 @@
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" >重置密码</h5>
-            <button type="button" class="close"  aria-label="Close">
+            <button type="button" class="close" ng-click="action.cancel()">
                 <span aria-hidden="true">×</span>
             </button>
         </div>
         <div class="modal-body">
-            <p>
-                {{name}}
-            </p>
+            <form>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" class="form-control is-valid" placeholder="请输入密码" autofocus>
+                    <div class="invalid-feedback">
+                       请输入8-12个字符
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>确认密码</label>
+                    <input type="password" class="form-control is-invalid" placeholder="请再次输入密码">
+                    <div class="invalid-feedback">
+                        两次密码不一致
+                     </div>
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary btn-block" >确定</button>
+                    <button type="button" class="btn btn-secondary btn-block" ng-click="action.cancel()">取消</button>
+                </div>
+
+            </form>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" >确定</button>
-            <button type="button" class="btn btn-secondary" ng-click="action.cancel()">取消</button>
-        </div>
+        <!-- <div class="modal-footer">
+            
+        </div> -->
     </div>
 </div>
