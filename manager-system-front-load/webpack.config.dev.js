@@ -11,7 +11,7 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
     entry : {
         app : ['./main.js', 'webpack-hot-middleware/client?reload=true'],
-        vendors : ['jquery', 'angular', 'angular-ui-router']
+        common : ['jquery', 'angular', 'angular-ui-router']
     },
     devtool: 'inline-source-map',
     module : {
@@ -27,13 +27,14 @@ module.exports = {
         }]
     },
     plugins : [
-        new webpack.optimize.CommonsChunkPlugin('vendors'),
+        new webpack.optimize.CommonsChunkPlugin('common'),
         new CleanWebpackPlugin(),
         new htmlWebpackPlugin({
             title : '管理系统',
             template : './main.html'
         }),
         new webpack.HotModuleReplacementPlugin,
+        // 打包完成打开浏览器
         new OpenBrowserPlugin({ url: 'http://localhost:8000' })
     ],
 

@@ -1,0 +1,44 @@
+.color-red {
+    color: red!important;
+}
+
+.color-write {
+    color: #fff!important;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.cursor-pointer {
+    cursor: pointer!important;
+}
+
+.head-man,
+.head-weman {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin: 0 10px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-image: url('/business/common/img/icon-head.png');
+    background-size: 90px 35px;
+    background-position-x: -1px;
+}
+
+.head-weman {
+    background-position-x: 36px;
+}
+
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.modal-content {
+    width: 100%;
+}
