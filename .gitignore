@@ -1,4 +1,4 @@
-manager-system-front/node_modules/
+*/node_modules/
 manager-system-back/node_modules/
 manager-system-front-load/node_modules/
 .idea/
