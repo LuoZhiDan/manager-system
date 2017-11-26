@@ -4,7 +4,7 @@ export default ['$scope', 'cookieService', '$state', 'userService', 'modalServic
     function ($scope, cookieService, $state, userService, modalService) {
 
         $scope.topNavURL = 'framework/top-nav/view/top-view.html';
-
+        
         $scope.model = {
             isOpen: false,
             userName: userService.getUserName(),

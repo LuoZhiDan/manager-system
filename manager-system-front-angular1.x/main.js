@@ -2,10 +2,6 @@
  * 主文件,应用入口
  */
 
-import angular from 'angular';
-import uiRouter from 'angular-ui-router';
-import lazy from 'oclazyload';
-
 import frameModule from './src/framework/index';
 import directiveModule from './src/directive/index';
 import serviceModule from './src/service/index';
@@ -14,10 +10,11 @@ import businessModule from './src/business/index';
 // 加载css
 import './node_modules/bootstrap/dist/css/bootstrap.css';
 import './src/common/css/common.css';
+import './src/common/css/home.css';
 
 let devs = [
-    uiRouter,
-    lazy,
+    'ui.router',
+    'oc.lazyLoad',
     frameModule.name,
     directiveModule.name,
     serviceModule.name,
@@ -25,9 +22,13 @@ let devs = [
 ]
 
 const mainModule = angular.module('manager.system', devs);
-    mainModule.run(['$rootScope', '$state', 'cookieService', function ($rootScope, $state, cookieService) {
-        $rootScope.$on('$stateChangeStart',
-            function (evt, toState, roParams, fromState, fromParams) {
+mainModule.run(['$rootScope', '$state', 'cookieService', 'maskService',
+        function ($rootScope, $state, cookieService, maskService) {
+
+            $rootScope.zIndex = 1000;
+
+            // 监听路由切换开始事件
+            $rootScope.$on('$stateChangeStart', (evt, toState, roParams, fromState, fromParams) => {
                 if (!cookieService.getToken() && toState.name != 'login') {
                     $state.transitionTo('login');
                     evt.preventDefault();
@@ -35,26 +36,38 @@ const mainModule = angular.module('manager.system', devs);
                     $state.transitionTo('home');
                     evt.preventDefault();
                 }
+
+                maskService.showWaitBox();
             });
-        $rootScope.zIndex = 1000;
-    }])
+
+            $rootScope.$on('$stateChangeSuccess', (evt, toState, roParams, fromState, fromParams) => {
+                maskService.hideWaitBox();
+            });
+
+            $rootScope.$on('$stateChangeError', (evt, toState, roParams, fromState, fromParams) => {
+                maskService.hideWaitBox();
+            });
+        }
+    ])
     .controller('mainController', ['$scope', '$http', '$state', 'cookieService',
         ($scope, $http, $state, cookieService) => {
-            // 标记当前是登录页面还是业务页面
             $scope.isLoginPage = true;
             $scope.isBusinessPage = false;
 
+            // 标记当前是登录页面还是业务页面
             if (!cookieService.getToken()) {
                 $state.transitionTo('login');
             } else {
                 $state.transitionTo('home');
             }
 
-            $scope.$watch(function () {
+            $scope.$watch(() => {
                 return $state.includes('login');
-            }, function (newValue, oldValue) {
-                $scope.isLoginPage = newValue;
-                $scope.isBusinessPage = !newValue;
+            }, (newVal, oldVal) => {
+                if (newVal !== oldVal) {
+                    $scope.isLoginPage = newVal;
+                    $scope.isBusinessPage = !newVal;
+                }
             })
         }
     ])

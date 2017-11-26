@@ -1,6 +1,6 @@
-import anglar from 'angular';
-import $ from 'jquery';
-
+/**
+ * 模态框
+ */
 export default ['$rootScope', '$compile', function($rootScope, $compile){
     const modal = [];
 

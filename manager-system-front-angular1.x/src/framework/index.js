@@ -2,7 +2,6 @@
  * 框架模块(登录/顶部菜单/左侧菜单/底部展示)
  */
 
-import angular from 'angular';
 import router from './framework-router';
 import topController from './top-nav/controller/top-controller';
 import footerController from './footer/controller/footer-controller';

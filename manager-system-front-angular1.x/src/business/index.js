@@ -2,7 +2,6 @@
  * 业务模块
  */
 
-import angular from "angular";
 import router from './business-router';
 
 const businessModule = angular.module('manager.system.business', []);
