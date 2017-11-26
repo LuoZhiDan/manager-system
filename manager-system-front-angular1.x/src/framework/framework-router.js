@@ -8,7 +8,7 @@ export default [{
     controller: 'loginController',
     templateUrl: 'framework/login/view/login-view.html',
     resolve: {
-        lazy : ['$q', '$ocLazyLoad', ($q, $ocLazyLoad)=>{
+        /* lazy : ['$q', '$ocLazyLoad', ($q, $ocLazyLoad)=>{
             let defer = $q.defer();
             require.ensure([], (require)=>{
                 require('./login/service/login-service.js');
@@ -19,6 +19,13 @@ export default [{
                 defer.resolve();
             }, 'login');
             return defer.promise;
+        }] */
+        lazy : ['$ocLazyLoad', ($ocLazyLoad)=>{
+            return import('./login/controller/login-controller.js').then((md)=>{
+                $ocLazyLoad.load({
+                    name : md.default.name
+                });
+            });
         }]
     }
 

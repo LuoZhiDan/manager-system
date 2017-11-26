@@ -3,6 +3,7 @@
  */
 
 import frameworkModule from '../../index';
+import '../service/login-service';
 
 frameworkModule.controller('loginController', ['$scope', 'loginService', '$state', 'cookieService', 'enumService', 'userService',
     function ($scope, loginService, $state, cookieService, enumService, userService) {
