@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" >重置密码</h5>
+            <h5 class="modal-title">重置密码</h5>
             <button type="button" class="close" ng-click="action.cancel()">
                 <span aria-hidden="true">×</span>
             </button>
@@ -9,28 +9,37 @@
         <div class="modal-body">
             <form>
                 <div class="form-group">
-                    <label>密码</label>
-                    <input type="password" class="form-control is-valid" placeholder="请输入密码" autofocus>
-                    <div class="invalid-feedback">
-                       请输入8-12个字符
-                    </div>
+                    <label>旧密码</label>
+                    <input type="password" class="form-control"
+                        ng-change="action.change()"
+                        ng-class="{'is-invalid' : model.errorCfg.pwdError}"
+                        ng-model="model.pwdCfg.pwd" placeholder="请输入密码">
+                </div>
+                <div class="form-group">
+                    <label>新密码</label>
+                    <input type="password" class="form-control" 
+                        ng-class="{'is-invalid' : model.errorCfg.newPwdError}"
+                        ng-focus="action.verfiyNewPwd()"
+                        ng-blur="action.verfiyNewPwd()"
+                        ng-model="model.pwdCfg.newPwd" placeholder="请输入密码">
+                    <small class="form-text text-muted">请输入6-12个任意字符</small>
                 </div>
                 <div class="form-group">
                     <label>确认密码</label>
-                    <input type="password" class="form-control is-invalid" placeholder="请再次输入密码">
-                    <div class="invalid-feedback">
-                        两次密码不一致
-                     </div>
+                    <input type="password" class="form-control" 
+                        ng-class="{'is-invalid' : model.errorCfg.confPwdError}"
+                        ng-focus="action.verfiyConfPwd()"
+                        ng-blur="action.verfiyConfPwd()"
+                        ng-model="model.pwdCfg.confPwd" placeholder="请再次输入密码">
+                    <small class="form-text text-muted">两次密码请保存一致</small>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-block" >确定</button>
-                    <button type="button" class="btn btn-secondary btn-block" ng-click="action.cancel()">取消</button>
+                        <button type="button" class="btn btn-primary btn-block" ng-click="action.ok()">确定</button>
+                        <button type="button" class="btn btn-secondary btn-block" ng-click="action.cancel()">取消</button>
                 </div>
-
             </form>
         </div>
         <!-- <div class="modal-footer">
-            
         </div> -->
     </div>
 </div>

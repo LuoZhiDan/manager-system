@@ -1,12 +1,12 @@
 /**
  * 模态框
  */
-export default ['$rootScope', '$compile', function($rootScope, $compile){
+export default ['$rootScope', '$compile', '$controller', function($rootScope, $compile, $controller){
     const modal = [];
 
-    const tpl = `<div ng-controller="modalController">
+    const tpl = `<div>
             <div class="modal fade show" tabindex="-1" role="dialog" style="display:block;z-index:{{zIndex}};"
-                 ng-include="url"></div>
+                 ng-include="templateUrl"></div>
 
             <div class="modal-backdrop fade show" style="z-index:{{zIndex - 1}};"></div>
         </div>`
@@ -17,9 +17,10 @@ export default ['$rootScope', '$compile', function($rootScope, $compile){
     this.openModal = (config)=>{
         let dom, 
             scope;
-        
         scope = $rootScope.$new(true);
-        anglar.extend(scope, config);
+        // 注入controller
+        $controller(config.controller, {$scope: scope});
+        scope.templateUrl = config.templateUrl;
         scope.zIndex = $rootScope.zIndex++;
 
         dom = $compile(tpl)(scope);

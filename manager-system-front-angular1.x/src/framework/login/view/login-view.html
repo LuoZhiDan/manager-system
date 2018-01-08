@@ -1,18 +1,19 @@
 <style>
-    .form-container{
+    .form-container {
         max-width: 320px;
         margin: -100px auto 0;
-        padding: 40px; 
+        padding: 40px;
         border: 1px solid #ced4da;
         border-radius: 3px;
         background-color: #fff;
     }
 
-    .login-bg{
-        height:100%;
+    .login-bg {
+        height: 100%;
         margin: 0 auto;
-        display:flex; /* 实现垂直居中 display:flex;align-items:center; */
-        align-items:center;
+        display: flex;
+        /* 实现垂直居中 display:flex;align-items:center; */
+        align-items: center;
     }
 </style>
 
@@ -21,7 +22,9 @@
         <div class="form-row form-group">
             <div class="input-group">
                 <span class="input-group-addon">
-                        <img ng-src="/common/img/icon-user.svg" width="18px" style="user-select:none;">
+                    <svg class="icon" fill="#666">
+                        <use xlink:href="/common/img/sprite.svg#person"></use>
+                    </svg>
                 </span>
                 <input type="text" class="form-control" autofocus ng-model="model.user.name">
             </div>
@@ -29,15 +32,16 @@
         <div class="form-row form-group">
             <div class="input-group">
                 <span class="input-group-addon">
-                    <img ng-src="/common/img/icon-pwd.svg" width="18px" style="user-select:none;">
+                    <svg class="icon" fill="#666">
+                        <use xlink:href="/common/img/sprite.svg#key"></use>
+                    </svg>
                 </span>
                 <input type="password" class="form-control" ng-model="model.user.pwd" ng-class="{'is-invalid': model.errorState}">
             </div>
             <!-- <div class="invalid-feedback" ng-if="model.errorState" ng-bind="model.errorInfo"></div> -->
         </div>
         <div class="form-row">
-            <button class="btn btn-primary btn-block" type="button" 
-                ng-disabled="model.disabled()" ng-click="action.login()">登录</button>
+            <button class="btn btn-primary btn-block" type="button" ng-disabled="model.disabled()" ng-click="action.login()">登录</button>
         </div>
     </form>
 </div>

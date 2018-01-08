@@ -1,4 +1,4 @@
-export default ['enumService', function(enumService){
+export default ['enumService', '$state', function(enumService, $state){
 
     this.get = function(name){
         let cookies = document.cookie.split('; '),
@@ -41,7 +41,8 @@ export default ['enumService', function(enumService){
         this.put(enumService.get('token'), value);
     }
 
-    this.loginOut = ()=>{
+    this.logout = ()=>{
         this.remove(enumService.get('token'));
+        $state.transitionTo('login');
     }
 }];

@@ -17,7 +17,12 @@ function createUser(user, callback){
     userDb.save(callback);
 }
 
+function update(user, doc, callback){
+    UserModel.update(user, doc, {multi: true}, callback);
+}
+
 module.exports = {
     findUser,
-    createUser
+    createUser,
+    update
 }

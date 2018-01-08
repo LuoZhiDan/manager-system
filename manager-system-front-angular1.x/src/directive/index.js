@@ -1,5 +1,27 @@
 /**
  * 公共指令模块
  */
+var directiveModule = angular.module('manager.system.directive', []);
 
- export default angular.module('manager.system.directive', []);
+
+directiveModule.directive('msValid', function(){
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default directiveModule;

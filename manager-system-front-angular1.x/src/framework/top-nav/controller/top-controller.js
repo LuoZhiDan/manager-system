@@ -1,7 +1,5 @@
-import updatePwdController from './update-pwd-controller';
-
-export default ['$scope', 'cookieService', '$state', 'userService', 'modalService',
-    function ($scope, cookieService, $state, userService, modalService) {
+export default ['$scope', 'cookieService', '$state', 'userService', 'modalService', '$q', '$ocLazyLoad',
+    function ($scope, cookieService, $state, userService, modalService, $q, $ocLazyLoad) {
 
         $scope.topNavURL = 'framework/top-nav/view/top-view.html';
         
@@ -25,15 +23,24 @@ export default ['$scope', 'cookieService', '$state', 'userService', 'modalServic
             closeMenu: () => {
                 $scope.model.isOpen = false;
             },
-            loginOut: () => {
-                cookieService.loginOut();
-                $state.transitionTo('login');
+            logout: () => {
+                cookieService.logout();
             },
             updatePwd: () => {
                 $scope.action.closeMenu();
-                modalService.openModal({
-                    modalController: updatePwdController,
-                    url: 'framework/top-nav/view/update-pwd-view.html'
+                const deferred = $q.defer();
+                import('../controller/update-pwd-controller').then((md)=>{
+                    $ocLazyLoad.load({
+                        name : md.default.name
+                    });
+                    deferred.resolve();
+                });
+
+                deferred.promise.then(()=>{
+                    modalService.openModal({
+                        controller: 'updatePwdController',
+                        templateUrl: 'framework/top-nav/view/update-pwd-view.html'
+                    });
                 });
             }
         }

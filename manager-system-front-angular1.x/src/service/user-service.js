@@ -13,5 +13,5 @@ export default ['enumService', '$http', function(enumService, $http){
     this.getUserInfo = ()=>{
 
     }
-    
+
 }]

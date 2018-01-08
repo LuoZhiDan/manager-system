@@ -3,7 +3,7 @@ const router = express.Router();
 const userAction = require('../action/UserAction');
 const jwt = require('jsonwebtoken');
 const tokenConfig = require('../../common/config/token.config');
-const errorCode = require('../../common/config/errorcode.config')
+const code = require('../../common/config/code.config')
 
 
 /* 查询 */
@@ -29,7 +29,7 @@ router.get('/login', (req, res)=>{
             })
         // 不正确
         } else {
-            res.sendStatus(errorCode.ERROR_CODE_LOGIN);
+            res.sendStatus(code.ERROR_CODE_LOGIN);
         }
     })
 })
@@ -70,9 +70,32 @@ router.delete('/', (req, res)=>{
 
 
 /* 更新 */
-router.put('/', (req, res)=>{
-
-})
+router.put('/updatePwd', (req, res)=>{
+    const currentUser = req.user,
+        pwdCfg = req.body;
+    if(currentUser.pwd !== pwdCfg.pwd){
+        //密码错误
+        res.json({
+            status : code.ERROR_PWD
+        });
+    } else {
+        userAction.update({
+            name : currentUser.name
+        }, {
+            pwd : pwdCfg.newPwd
+        }, (err)=>{
+            if(!err){
+                res.json({
+                    status : code.SUCCESS_CODE
+                });
+            } else {
+                res.json({
+                    status : code.ERROR_PWD
+                });
+            }
+        });
+    }
+});
 
 module.exports = router;
 

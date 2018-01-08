@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" ui-sref="home">
-        <img ng-src="/common/img/icon-logo.svg" height="30">
-        中国SOS儿童村管理系统
+        <img ng-src="/common/img/icon-logo.svg" height="30"> 中国SOS儿童村管理系统
     </a>
     <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,26 +9,38 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" ng-repeat="item in model.menus.menuItems">
-                <a class="nav-link" ui-sref="{{item.sref}}" ng-bind="item.name" 
-                    ng-class="{'active': item.sref === model.menus.active}"></a>
+                <a class="nav-link" ui-sref="{{item.sref}}" ng-bind="item.name" ng-class="{'active': item.sref === model.menus.active}"></a>
             </li>
         </ul>
         <div class="navbar-nav my-2 my-lg-0">
             <div class="dropdown">
                 <a class="btn btn-link dropdown-toggle color-write cursor-pointer" ng-click="action.toggleMenu()" ng-cloak>
-                    <span class="head-man"></span>{{model.userName}}
+                    <span class="user" style="padding-top:4px;">
+                        <svg class="icon icon-user" fill="#111">
+                            <use xlink:href="/common/img/sprite.svg#person"></use>
+                        </svg>
+                    </span>
+                    <span>
+                        {{model.userName}}
+                    </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" ng-class="{show: model.isOpen}">
                     <a class="dropdown-item" ng-click="">
-                        <img ng-src="/common/img/icon-user.svg" width="18">
+                        <svg class="icon" fill="#666">
+                            <use xlink:href="/common/img/sprite.svg#person"></use>
+                        </svg>
                         <span style="padding-left:10px;">用户信息</span>
                     </a>
                     <a class="dropdown-item" ng-click="action.updatePwd()">
-                        <img ng-src="/common/img/icon-pwd.svg" width="18">
+                        <svg class="icon" fill="#666">
+                            <use xlink:href="/common/img/sprite.svg#lock-locked"></use>
+                        </svg>
                         <span style="padding-left:10px;">修改密码</span>
                     </a>
-                    <a class="dropdown-item" ng-click="action.loginOut()">
-                        <img ng-src="/common/img/icon-logout.svg" height="20">
+                    <a class="dropdown-item" ng-click="action.logout()">
+                        <svg class="icon" fill="#666">
+                            <use xlink:href="/common/img/sprite.svg#account-logout"></use>
+                        </svg>
                         <span style="padding-left:10px;">退出</span>
                     </a>
                 </div>
@@ -37,4 +48,3 @@
         </div>
     </div>
 </nav>
-

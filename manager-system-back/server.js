@@ -33,7 +33,7 @@ app.use('/rest/', function (req, res, next) {
                 return res.json({ success: false, message: 'token信息错误.' });
             } else {
                 // 如果没问题就把解码后的信息保存到请求中，供后面的路由使用
-                console.log(decoded)
+                req.user = decoded;
                 next();
             }
         });

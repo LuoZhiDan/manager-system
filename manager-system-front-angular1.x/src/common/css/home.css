@@ -29,3 +29,16 @@
     text-align: center;
     background-color: gray;
 }
+
+.user{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius:50%;
+    background-color: #fff;
+}
+
+.icon-user{
+    width: 20px;
+    height: 20px;
+}

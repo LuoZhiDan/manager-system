@@ -29,15 +29,17 @@ mainModule.run(['$rootScope', '$state', 'cookieService', 'maskService',
 
             // 监听路由切换开始事件
             $rootScope.$on('$stateChangeStart', (evt, toState, roParams, fromState, fromParams) => {
-                if (!cookieService.getToken() && toState.name != 'login') {
-                    $state.transitionTo('login');
-                    evt.preventDefault();
-                } else if (cookieService.getToken() && toState.name == 'login') {
+                if (!cookieService.getToken()) {
+                    if(toState.name !== 'login'){
+                        $state.transitionTo('login');
+                        evt.preventDefault();
+                    }
+                } else if (toState.name == 'login') {
                     $state.transitionTo('home');
                     evt.preventDefault();
+                } else {
+                    maskService.showWaitBox();
                 }
-
-                maskService.showWaitBox();
             });
 
             $rootScope.$on('$stateChangeSuccess', (evt, toState, roParams, fromState, fromParams) => {
@@ -59,6 +61,8 @@ mainModule.run(['$rootScope', '$state', 'cookieService', 'maskService',
                 $state.transitionTo('login');
             } else {
                 $state.transitionTo('home');
+                $scope.isLoginPage = false;
+                $scope.isBusinessPage = true;
             }
 
             $scope.$watch(() => {
@@ -68,7 +72,7 @@ mainModule.run(['$rootScope', '$state', 'cookieService', 'maskService',
                     $scope.isLoginPage = newVal;
                     $scope.isBusinessPage = !newVal;
                 }
-            })
+            });
         }
     ])
 
